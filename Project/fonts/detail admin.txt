@@ -1,0 +1,33 @@
+HALAMAN UTAMA 
+- Melihat Informasi Jumlah Pesanan Produk
+
+MENGELOLA INFORMASI
+Navbar Teks
+* HALAMAN BERANDA
+- Melihat informasi teks di halaman beranda
+- menyimpan perubahan teks di halaman beranda
+- menghapus infromasi teks di halaman beranda
+- menambah informasi teks di halaman beranda
+* HALAMAN TENTANG TOKO
+- Melihat informasi di halaman tentang toko
+- menyimpan perubahan informasi pada halaman tentang toko
+- menghapus informasi di halaman tentang toko
+ 
+MENGELOLA DATA
+* DATA PRODUK
+- melihat informasi data produk
+- menambah produk
+- melakukan perubahan pada data produk 
+* DATA AKUN 
+- Melihat informasi data akun
+- melakukan non-aktif akun
+- melakukan aktifkan kembali akun
+
+MENGELOLA PESANAN
+* PEMESANAN
+- Melihat informasi detail pesanan pelanggan
+- Menerima pesanan pembeli
+- Menolak pesanan pembeli
+
+MELAKUKAN LOGOUT
+MELAKUKAN LOGIN

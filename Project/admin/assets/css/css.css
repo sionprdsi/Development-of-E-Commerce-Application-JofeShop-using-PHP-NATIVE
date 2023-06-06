@@ -1,0 +1,68 @@
+/* adjust the margin-bottom of the container for smaller screens */
+@media (max-width: 767px) {
+    .container {
+      margin-bottom: 10%;
+    }
+  }
+  
+  /* center the text of the header on smaller screens */
+  @media (max-width: 576px) {
+    h2 {
+      text-align: center;
+    }
+  }
+  
+  /* make the alert message full-width on smaller screens */
+  @media (max-width: 576px) {
+    .alert {
+      margin-left: -15px;
+      margin-right: -15px;
+    }
+  }
+  
+  /* center the reload button on smaller screens */
+  @media (max-width: 576px) {
+    .btn-block {
+      text-align: center;
+    }
+  }
+  
+  /* adjust the table font size and padding on smaller screens */
+  @media (max-width: 576px) {
+    table {
+      font-size: 14px;
+    }
+    table td,
+    table th {
+      padding: 0.5rem;
+    }
+  }
+
+  .container {
+    max-width: 768px;
+    margin: auto;
+    padding: 10px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.btn {
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .btn {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+  
