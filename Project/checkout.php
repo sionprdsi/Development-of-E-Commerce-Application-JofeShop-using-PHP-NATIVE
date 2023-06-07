@@ -25,7 +25,7 @@ $rows = mysqli_fetch_assoc($cs);
 
 <div class="container" >
 	<h2 class="text-center pb-4 pt-5 mb-0"
-		style="border-bottom: 2px solid #6C5B7B; padding: 10px; margin-bottom: 100px;  font-family: 'Crimson Text', serif; font-size: 3.8rem;  color: #333; text-shadow: 2px 2px #ccc; width: 100%;">
+		style="border-bottom: 2px solid #6C5B7B; padding: 10px; margin-bottom: 100px; margin-top: 100px; font-family: 'Crimson Text', serif; font-size: 3.8rem;  color: #333; text-shadow: 2px 2px #ccc; width: 100%;">
 		<b>DETAIL PESANAN ANDA</b>
 	</h2>
 	<div class="row">

@@ -134,24 +134,79 @@ if (isset($_SESSION['kd_cs'])) { // Ini adalah awal dari struktur kondisional if
 </head>
 
 <body>
-	<div class="container-fluid"
-		style="background: linear-gradient(to bottom right, #5600c2, #2A4FA6); 		padding: 40px; 		text-align: center;">
-		<div class="logo">
-			<img src="image/logo/JOfe BAkery-modified.png" alt="JoFe - Shop">
-			<span>JoFe Bakery</span>
-		</div>
-		<div class="content">
-			<h2>Rasakan Kelezatan Kue Istimewa di JoFe Bakery</h2>
-			<p>Jelajahi nikmatnya kue istimewa hanya di JoFe Bakery! Kami menawarkan beragam kue lezat yang disajikan
-				dengan kualitas terbaik dan keahlian profesional. Setiap gigitan akan memikat lidah Anda dengan
-				kelezatan yang tiada tanding. Ayo kunjungi toko kami sekarang dan nikmati sendiri kelezatan kue yang
-				luar biasa ini!</p>
-			<a href="produk.php" class="cta-button">Jelajahi Menu Kami</a>
-		</div>
-	</div>
-</body>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: 'Montserrat', sans-serif;
+		}
 
-<style>
+		.logo {
+			display: block;
+			margin: 0 auto;
+			max-width: 250px;
+			height: auto;
+			margin-bottom: 20px;
+			animation: slide 1s ease-in-out;
+		}
+
+		.logo img {
+			width: 100%;
+			height: auto;
+			margin-top: 93px;
+			margin-bottom: 10px;
+		}
+
+		.logo span {
+			font-size: 46px;
+			color: #fff;
+			font-family: 'Montserrat';
+		}
+
+		@media (max-width: 768px) {
+			.container-fluid {
+				padding: 20px;
+			}
+
+			.logo img {
+				width: 70%;
+				margin-top: 30px;
+			}
+
+			.logo span {
+				font-size: 24px;
+			}
+		}
+
+		@keyframes slide {
+			0% {
+				opacity: 0;
+				transform: translateY(-50px);
+			}
+
+			100% {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+	</style>
+
+		<div class="container-fluid" style="background: linear-gradient(to bottom right, #5600c2, #2A4FA6); padding: 40px; text-align: center;">
+			<div class="logo">
+				<img src="image/logo/JOfe BAkery-modified.png" alt="JoFe - Shop">
+				<span>JoFe Bakery</span>
+			</div>
+			<div class="content">
+			</div>
+		</div>
+
+		<!-- <h2>Rasakan Kelezatan Kue Istimewa di JoFe Bakery</h2>
+	<p>Jelajahi nikmatnya kue istimewa hanya di JoFe Bakery! Kami menawarkan beragam kue lezat yang disajikan
+		dengan kualitas terbaik dan keahlian profesional. Setiap gigitan akan memikat lidah Anda dengan
+		kelezatan yang tiada tanding. Ayo kunjungi toko kami sekarang dan nikmati sendiri kelezatan kue yang
+		luar biasa ini!</p>
+	<a href="produk.php" class="cta-button">Jelajahi Produk Kami !</a> -->
+		<!-- <style>
 	body {
 		margin: 0;
 		padding: 0;
@@ -161,16 +216,16 @@ if (isset($_SESSION['kd_cs'])) { // Ini adalah awal dari struktur kondisional if
 	.logo {
 		display: block;
 		margin: 0 auto;
-		max-width: 300px;
+		max-width: 250px;
 		height: auto;
-		margin-bottom: 20px;
+		margin-bottom: 50px;
 	}
 
 	.logo img {
 		width: 100%;
 		height: auto;
-		margin-top: 73px;
-		margin-bottom: 30px;
+		margin-top: 93px;
+		margin-bottom: 50px;
 	}
 
 	.logo span {
@@ -189,13 +244,13 @@ if (isset($_SESSION['kd_cs'])) { // Ini adalah awal dari struktur kondisional if
 	.content h2 {
 		color: #fff;
 		font-family: 'Montserrat';
-		font-size: 36px;
+		font-size: 20px;
 	}
 
 	.content p {
 		color: #fff;
 		font-family: 'Montserrat';
-		font-size: 24px;
+		font-size: 18px;
 	}
 
 	.cta-button {
@@ -204,7 +259,7 @@ if (isset($_SESSION['kd_cs'])) { // Ini adalah awal dari struktur kondisional if
 		padding: 10px 20px;
 		background-color: #fff;
 		color: #5600c2;
-		font-size: 20px;
+		font-size: 15px;
 		font-family: 'Montserrat';
 		text-decoration: none;
 		border-radius: 5px;
@@ -246,74 +301,74 @@ if (isset($_SESSION['kd_cs'])) { // Ini adalah awal dari struktur kondisional if
 			font-size: 18px;
 		}
 	}
-</style>
+</style> -->
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-default custom-navbar"
-	style="border-bottom: 8px solid linear-gradient(to bottom right, #6C5B7B, #355C7D);">
-	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		<div class="container-fluid navbar-center">
-			<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li style="color:black"><a href="index.php">Beranda</a></li>
-					<li><a href="produk.php">Produk</a></li>
-					<li><a href="about.php">Tentang Kami</a></li>
+		<!-- NAVBAR -->
+		<nav class="navbar navbar-default custom-navbar"
+			style="border-bottom: 8px solid linear-gradient(to bottom right, #6C5B7B, #355C7D);">
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<div class="container-fluid navbar-center">
+					<div class="collapse navbar-collapse">
+						<ul class="nav navbar-nav">
+							<li style="color:black"><a href="index.php">Beranda</a></li>
+							<li><a href="produk.php">Produk</a></li>
+							<li><a href="about.php">Tentang Kami</a></li>
 
-					<?php
+							<?php
 
-					if (isset($_SESSION['kd_cs'])) {
-						$kode_cs = $_SESSION['kd_cs'];
-						$cek = mysqli_query($conn, "SELECT kode_produk from keranjang where kode_customer = '$kode_cs' ");
-						$value = mysqli_num_rows($cek);
+							if (isset($_SESSION['kd_cs'])) {
+								$kode_cs = $_SESSION['kd_cs'];
+								$cek = mysqli_query($conn, "SELECT kode_produk from keranjang where kode_customer = '$kode_cs' ");
+								$value = mysqli_num_rows($cek);
 
-						?>
+								?>
 
-						<li><a href="keranjang.php"><i class="glyphicon glyphicon-shopping-cart"></i>
-								<b class="badge badge-sion">
-									<?= $value ?>
-								</b></a></li>
+								<li><a href="keranjang.php"><i class="glyphicon glyphicon-shopping-cart"></i>
+										<b class="badge badge-sion">
+											<?= $value ?>
+										</b></a></li>
 
-						<?php
+								<?php
 
-					} else {
-						echo "<li><a href='keranjang.php'><i class='glyphicon glyphicon-shopping-cart'></i> <span class='badge badge-sion'>0</span></a></li>";
-					}
-					if (!isset($_SESSION['user'])) {
+							} else {
+								echo "<li><a href='keranjang.php'><i class='glyphicon glyphicon-shopping-cart'></i> <span class='badge badge-sion'>0</span></a></li>";
+							}
+							if (!isset($_SESSION['user'])) {
 
-						?>
+								?>
 
-					</ul>
-
-					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								aria-expanded="false"><i class="glyphicon glyphicon-user"></i>
-								Masuk
-								<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="user_login.php"><i class="fa fa-sign-in"></i> Masuk</a></li>
-								<li><a href="register.php"><i class="fa fa-user-plus"></i> Daftar</a></li>
 							</ul>
-						</li>
 
-						<?php
-					} else {
-						?>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								aria-expanded="false"><i class="glyphicon glyphicon-user"></i>
-								<?= $_SESSION['user']; ?> <span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu">
-								<li><a href="proses/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i>
-										Keluar</a></li>
-							</ul>
-						</li>
-						<?php
-					}
-					?>
-				</ul>
+							<ul class="nav navbar-nav navbar-right">
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+										aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-user"></i>
+										Masuk
+										<span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="user_login.php"><i class="fa fa-sign-in"></i> Masuk</a></li>
+										<li><a href="register.php"><i class="fa fa-user-plus"></i> Daftar</a></li>
+									</ul>
+								</li>
+
+								<?php
+							} else {
+								?>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+										aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-user"></i>
+										<?= $_SESSION['user']; ?> <span class="caret"></span>
+									</a>
+									<ul class="dropdown-menu">
+										<li><a href="proses/logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i>
+												Keluar</a></li>
+									</ul>
+								</li>
+								<?php
+							}
+							?>
+						</ul>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
-</nav>
+		</nav>

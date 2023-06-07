@@ -19,7 +19,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
   echo "<style>
     .text-center.heading {
-      font-size: 32px;
+      font-size: 29px;
       padding: 20px;
       color: white;
       border-radius: 10px;
@@ -55,7 +55,7 @@ if ($result->num_rows > 0) {
   </style>";
 
   while ($row = $result->fetch_assoc()) {
-    echo "<div class='container' style='margin-top: 100px; margin-bottom: 100px;'>
+    echo "<div class='container' style='margin-top: 70px; margin-bottom: 90px;'>
       <h4 class='text-center heading'>
         " . $row["deskripsi"] . "
         <span class='promo-badge'>
@@ -75,20 +75,19 @@ if ($result->num_rows > 0) {
     <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
     <li data-target="#carousel-example" data-slide-to="1"></li>
     <li data-target="#carousel-example" data-slide-to="2"></li>
+    <li data-target="#carousel-example" data-slide-to="3"></li>
   </ol>
 
   <div class="carousel-inner">
     <div class="item active">
-      <img src="image/carousel/carousel2.jpg" alt="Carousel Image 1" style="width: 100%;">
+      <img src="image/carousel/carousel4.jpeg" alt="Carousel Image 1" style="width: 100%;">
       <div class="carousel-caption">
-        <h2>JoFe - Bakery</h2>
+        <h2 style="font-size: 4.7rem; text-shadow: 2px 2px #ccc; width: 100%; font-family: 'Crimson Text', serif;">JoFe
+          - Bakery</h2>
         <p>JoFe - Bakery menawarkan beragam jenis kue kering yang lezat dan berkualitas tinggi. Kue-kue kering kami
           dibuat dengan menggunakan bahan-bahan berkualitas dan diracik dengan resep yang teruji, sehingga memberikan
           pengalaman rasa yang istimewa bagi setiap pelanggan.
-          Kami selalu berusaha memberikan yang terbaik bagi pelanggan kami, sehingga Anda akan mendapatkan produk yang
-          berkualitas tinggi dan layanan yang ramah dari tim kami. Jangan ragu untuk menghubungi kami melalui WhatsApp
-          di nomor +62 821-1615-4550 untuk pemesanan dan informasi lebih lanjut. Terima kasih telah mempercayakan
-          kebutuhan kue kering Anda kepada kami di JoFe - Bakery.</p>
+        </p>
       </div>
     </div>
     <div class="item">
@@ -103,6 +102,13 @@ if ($result->num_rows > 0) {
       <div class="carousel-caption">
         <h2>Kunjungan Mahasiswa IT DEL</h2>
         <p>Melakukan Observasi mengenai produk kue di JoFe - Bakery.</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="image/carousel/carousel 4.jpeg" alt="Carousel Image 3" style="width: 100%;">
+      <div class="carousel-caption">
+        <h2>Kue Kering</h2>
+        <p> Kue Kering asli buatan Toko JoFe Bakery</p>
       </div>
     </div>
   </div>

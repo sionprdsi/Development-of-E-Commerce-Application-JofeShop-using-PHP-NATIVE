@@ -96,11 +96,11 @@ $row = mysqli_fetch_assoc($result);
                                     <?php
                                 } else {
                                     ?>
-                                    <div class="col-md-6">
+                                    <!-- <div class="col-md-6"> -->
                                         <a href="keranjang.php" class="btn btn-success btn-block" role="button">
                                             <i class="fa fa-cart-plus"></i> Tambahkan ke Keranjang
                                         </a>
-                                    </div>
+                                    <!-- </div> -->
                                     <?php
                                 }
                                 ?>
@@ -116,10 +116,10 @@ $row = mysqli_fetch_assoc($result);
                     <?php
                 } else {
                     ?>
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-6"> -->
                         <a href="keranjang.php" class="btn btn-success btn-block" role="button"><i
-                                class="glyphicon glyphicon-shopping-cart"></i> Tambahkan ke Keranjang</a>
-                    </div>
+                                class="fa fa-cart-plus"></i> Tambahkan ke Keranjang</a>
+                    <!-- </div> -->
                     <?php
                 }
                 ?>
