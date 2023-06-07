@@ -38,9 +38,9 @@ if (isset($_GET['del'])) {
 
 
 
-<div class="container" style="margin-top: 100px;">
+<div class="container" style="margin-top: 100px; margin-bottom: 18%;">
     <h2 class="text-center pb-4 pt-5 mb-0"
-        style="border-bottom: 2px solid #6C5B7B; padding: 10px; margin-bottom: 100px; font-family: 'Crimson Text', serif; font-size: 3.5rem; color: #333; text-shadow: 2px 2px #ccc; width: 100%;">
+        style="border-bottom: 2px solid #6C5B7B; padding: 10px; margin-bottom: 150px; font-family: 'Crimson Text', serif; font-size: 3.5rem; color: #333; text-shadow: 2px 2px #ccc; width: 100%;">
         <b>KERANJANG</b>
     </h2>
     <table class="table table-striped">

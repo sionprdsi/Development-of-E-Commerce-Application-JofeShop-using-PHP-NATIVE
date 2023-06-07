@@ -44,7 +44,7 @@
                 <ul class="social-icons">
                     <li><a class="whatsapp" href="https://wa.me/6282116154550?text=Halo JoFe Bakery, saya butuh bantuan..."><i
                                 class="fa fa-whatsapp"></i></a></li>
-                    <li><a class="instagram" href="https://www.instagram.com/jofe_bakery/"><i class="fa fa-instagram"></i></a></li>
+                    <li><a class="instagram" href="https://instagram.com/jofebakery_?igshid=MzNlNGNkZWQ4Mg=="><i class="fa fa-instagram"></i></a></li>
                 </ul>
             </div>
         </div>

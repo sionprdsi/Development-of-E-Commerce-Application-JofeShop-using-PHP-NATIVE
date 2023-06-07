@@ -23,7 +23,7 @@ $rows = mysqli_fetch_assoc($cs);
 	}
 </style>
 
-<div class="container" style="margin-top: 100px; margin-bottom: 100px;">
+<div class="container" >
 	<h2 class="text-center pb-4 pt-5 mb-0"
 		style="border-bottom: 2px solid #6C5B7B; padding: 10px; margin-bottom: 100px;  font-family: 'Crimson Text', serif; font-size: 3.8rem;  color: #333; text-shadow: 2px 2px #ccc; width: 100%;">
 		<b>DETAIL PESANAN ANDA</b>
@@ -91,7 +91,7 @@ $rows = mysqli_fetch_assoc($cs);
 			<h5><i class="fas fa-check"></i> Pastikan Pesanan Anda Sudah Benar</h5>
 		</div>
 	</div>
-	<div class="container my-5" style="margin-top: 2%; margin-bottom: -1000%;">
+	<div class="container my-5" style>
 		<div class="row">
 			<div class="col-md-6">
 				<div class="card bg-light">
@@ -138,7 +138,7 @@ $rows = mysqli_fetch_assoc($cs);
 		</div>
 	</div>
 
-	<div class="row mt-3" style="margin-top:3%; margin-bottom:2%;">
+	<div class="row mt-3" style=" ">
 		<div class="col-md-6 bg-warning">
 			<h5><i class="fas fa-pencil-alt"></i> Isi Form Dibawah Ini</h5>
 		</div>

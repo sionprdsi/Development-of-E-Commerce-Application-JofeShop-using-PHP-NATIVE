@@ -270,17 +270,18 @@ if (mysqli_num_rows($result) > 0) {
   <h2 style="font-family: 'Crimson Text', serif; font-size: 4.8rem; font-weight: bold; margin-bottom: 20px;">
     Lokasi Toko JoFe Bakery
   </h2>
-  <div class="map">
+  <div class="map" style="position: relative; overflow: hidden; padding-top: 56.25%;">
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7973.0080315270125!2d99.0537582697754!3d2.335540200000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x302e0466d4af5ef7%3A0x82931087a70bca84!2sPLN%20Ranting%20Balige!5e0!3m2!1sid!2sid!4v1680680148682!5m2!1sid!2sid"
-      width="100%" height="700" style="border:0;" allowfullscreen="" loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
+      width="100%" height="100%" style="border:0; position: absolute; top: 0; left: 0;" allowfullscreen=""
+      loading="lazy" referrerpolicy="no-referrer-when-downgrade">
     </iframe>
   </div>
-  <div class="info" style="margin-top: 17%;">
+  <div class="info" style="margin-top: 3%;">
     <a href="https://www.google.com/maps/dir//PLN+Ranting+Balige/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x302e0466d4af5ef7:0x82931087a70bca84?sa=X&ved=2ahUKEwiO_8HY8Yv3AhXQaCsKHfZlDQwQ9Rd6BAh3EAQ"
-      target="_blank" class="button">
-      <i class="fas fa-location-arrow"></i> Navigasi
+      target="_blank" class="button"
+      style="display: inline-block; padding: 12px 24px; background-color: ; ; font-family: 'Arial', sans-serif; font-size: 1.6rem; text-decoration: none; border-radius: 4px;">
+      <i class="fas fa-location-arrow" style="margin-right: 8px;"></i> Navigasi
     </a>
   </div>
 </section>

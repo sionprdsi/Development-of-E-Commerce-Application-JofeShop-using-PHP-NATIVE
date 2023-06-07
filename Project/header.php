@@ -128,26 +128,124 @@ if (isset($_SESSION['kd_cs'])) { // Ini adalah awal dari struktur kondisional if
 </head>
 
 <body>
-	<div class="container-fluid">
-		<div class="row top" style="background: linear-gradient(to bottom right, #5600c2, #2A4FA6);">
-			<div class="col-md-4" style="margin-bottom:2%;">
-				<span style="font-size: 60px; color: #fff; font-family: 'Montserrat';">
-					<img src="image/logo/JOfe BAkery-modified.png" alt="JoFe - Shop" width="300" height="300"
-						style="vertical-align: middle; padding-right:10px; margin-top:40px;">JoFe Bakery</span>
-			</div>
-			<div class="col-md-4" style="margin-top: 50px; float: left; margin-left:21%;">
-				<h2 style="color: #fff; font-family: 'Montserrat'; font-size: 36px;">Nikmati Kelezatan Kue di
-					JoFe - Bakery</h2>
-				<p style="color: #fff; font-family: 'Montserrat'; font-size: 24px;">Nikmati kelezatan kue berkualitas
-					terbaik yang siap memanjakan lidah Anda hanya di JoFe Bakery! Kami menyediakan berbagai pilihan kue
-					yang dibuat dengan bahan-bahan terbaik dan dengan keahlian yang profesional, sehingga setiap gigitan
-					pasti membuat Anda terpesona. Segera kunjungi toko kami dan rasakan sendiri
-					kelezatan kue kami yang tak tertandingi!</p>
-			</div>
+	<div class="container-fluid"
+		style="background: linear-gradient(to bottom right, #5600c2, #2A4FA6); display: flex;	padding: 40px; 	text-align: center;  justify-content: space-between;">
+		<div class="logo">
+			<img src="image/logo/JOfe BAkery-modified.png" alt="JoFe - Shop">
+			<span>JoFe Bakery</span>
+		</div>
+		<div class="content">
+			<h2>Kenikmatan Kuliner di JoFe Bakery</h2>
+			<p>Sambutlah kenikmatan kuliner yang tiada duanya di JoFe Bakery! Kami menghadirkan berbagai hidangan lezat
+				yang menggoda selera Anda. Mulai dari kue-kue istimewa hingga Kue kering yang memanjakan lidah, Setiap hidangan kami adalah
+				perpaduan sempurna antara rasa yang lezat, tekstur yang menggoda, dan presentasi yang memukau. Dari
+				klasik hingga kreasi baru yang mengguncang lidah, setiap kunjungan ke JoFe Bakery adalah petualangan
+				kuliner yang menggetarkan selera Anda. Mari bergabung dalam perjalanan kuliner kami dan nikmati
+				pengalaman yang memuaskan di JoFe Bakery!</p>
 		</div>
 	</div>
 
-		<!-- Nabvar -->
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: 'Montserrat', sans-serif;
+		}
+
+		.logo {
+			display: block;
+			margin: 0 auto;
+			max-width: 300px;
+			height: auto;
+			margin-bottom: 20px;
+		}
+
+		.logo img {
+			width: 100%;
+			height: auto;
+			margin-top: 90px;
+			margin-bottom: 20px;
+		}
+
+		.logo span {
+			font-size: 36px;
+			color: #fff;
+			font-family: 'Montserrat';
+		}
+
+		.content {
+			margin-top: 90px;
+			float: left;
+			margin-left: 10%;
+			text-align: left;
+		}
+
+		.content h2 {
+			color: #fff;
+			font-family: 'Montserrat';
+			font-size: 36px;
+			margin-bottom: 60px;
+		}
+
+		.content p {
+			color: #fff;
+			font-family: 'Montserrat';
+			font-size: 24px;
+			margin-bottom: 30px;
+		}
+
+		.cta-button {
+			display: inline-block;
+			padding: 10px 20px;
+			background-color: #fff;
+			color: #5600c2;
+			font-size: 20px;
+			font-family: 'Montserrat';
+			text-decoration: none;
+			border-radius: 5px;
+		}
+
+		.cta-button:hover {
+			background-color: #5600c2;
+			color: #fff;
+		}
+
+		@media (max-width: 768px) {
+			.container {
+				padding: 20px;
+			}
+
+			.logo img {
+				width: 70%;
+				margin-top: 30px;
+			}
+
+			.logo span {
+				font-size: 24px;
+			}
+
+			.content {
+				float: none;
+				margin-left: 0;
+			}
+
+			.content h2 {
+				font-size: 30px;
+				margin-bottom: 10px;
+			}
+
+			.content p {
+				font-size: 20px;
+				margin-bottom: 20px;
+			}
+
+			.cta-button {
+				font-size: 18px;
+			}
+		}
+	</style>
+
+	<!-- Nabvar -->
 	<nav class="navbar navbar-default custom-navbar"
 		style="border-bottom: 8px solid linear-gradient(to bottom right, #6C5B7B, #355C7D);">
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
