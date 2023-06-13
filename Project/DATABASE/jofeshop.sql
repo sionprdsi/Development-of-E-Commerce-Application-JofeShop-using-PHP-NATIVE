@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `about` (
-  `id_about` int(11) NOT NULL,
-  `image` varchar(255) DEFAULT NULL,
-  `content` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id_about` INT(11) NOT NULL,
+  `image` VARCHAR(255) DEFAULT NULL,
+  `content` TEXT DEFAULT NULL
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `about`
@@ -47,10 +47,10 @@ INSERT INTO `about` (`id_about`, `image`, `content`) VALUES
 --
 
 CREATE TABLE `admin` (
-  `id` int(11) NOT NULL,
-  `username` varchar(200) NOT NULL,
-  `password` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` INT(11) NOT NULL,
+  `username` VARCHAR(200) NOT NULL,
+  `password` TEXT NOT NULL
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `admin`
@@ -66,14 +66,14 @@ INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 --
 
 CREATE TABLE `customer` (
-  `kode_customer` varchar(100) NOT NULL,
-  `nama` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `username` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `telp` varchar(200) NOT NULL,
-  `status` tinyint(4) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `kode_customer` VARCHAR(100) NOT NULL,
+  `nama` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(100) NOT NULL,
+  `username` VARCHAR(100) NOT NULL,
+  `password` VARCHAR(100) NOT NULL,
+  `telp` VARCHAR(200) NOT NULL,
+  `status` INT(4) DEFAULT 1
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `customer`
@@ -90,13 +90,13 @@ INSERT INTO `customer` (`kode_customer`, `nama`, `email`, `username`, `password`
 --
 
 CREATE TABLE `keranjang` (
-  `id_keranjang` int(11) NOT NULL,
-  `kode_customer` varchar(100) NOT NULL,
-  `kode_produk` varchar(100) NOT NULL,
-  `nama_produk` varchar(100) NOT NULL,
-  `qty` int(11) NOT NULL,
-  `harga` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id_keranjang` INT(11) NOT NULL,
+  `kode_customer` VARCHAR(100) NOT NULL,
+  `kode_produk` VARCHAR(100) NOT NULL,
+  `nama_produk` VARCHAR(100) NOT NULL,
+  `qty` INT(11) NOT NULL,
+  `harga` INT(11) NOT NULL
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -105,12 +105,12 @@ CREATE TABLE `keranjang` (
 --
 
 CREATE TABLE `produk` (
-  `kode_produk` varchar(100) NOT NULL,
-  `nama` varchar(100) NOT NULL,
-  `image` text NOT NULL,
-  `deskripsi` text NOT NULL,
-  `harga` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `kode_produk` VARCHAR(100) NOT NULL,
+  `nama` VARCHAR(100) UNIQUE NOT NULL,
+  `image` TEXT UNIQUE NOT NULL,
+  `deskripsi` TEXT NOT NULL,
+  `harga` INT(11) NOT NULL
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `produk`
@@ -132,23 +132,23 @@ INSERT INTO `produk` (`kode_produk`, `nama`, `image`, `deskripsi`, `harga`) VALU
 --
 
 CREATE TABLE `produksi` (
-  `id_order` int(11) NOT NULL,
-  `invoice` varchar(200) NOT NULL,
-  `kode_customer` varchar(200) NOT NULL,
-  `kode_produk` varchar(200) NOT NULL,
-  `nama_produk` varchar(200) NOT NULL,
-  `qty` int(11) NOT NULL,
-  `harga` int(11) NOT NULL,
-  `STATUS` varchar(200) NOT NULL,
-  `tanggal` date NOT NULL,
-  `provinsi` varchar(200) NOT NULL,
-  `kota` varchar(200) NOT NULL,
-  `alamat` varchar(200) NOT NULL,
-  `kode_pos` varchar(200) NOT NULL,
-  `terima` varchar(200) NOT NULL,
-  `tolak` varchar(200) NOT NULL,
-  `cek` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id_order` INT(11) NOT NULL,
+  `invoice` VARCHAR(200) NOT NULL,
+  `kode_customer` VARCHAR(200) NOT NULL,
+  `kode_produk` VARCHAR(200) NOT NULL,
+  `nama_produk` VARCHAR(200) NOT NULL,
+  `qty` INT(11) NOT NULL,
+  `harga` INT(11) NOT NULL,
+  `STATUS` VARCHAR(200) NOT NULL,
+  `tanggal` DATE NOT NULL,
+  `provinsi` VARCHAR(200) NOT NULL,
+  `kota` VARCHAR(200) NOT NULL,
+  `alamat` VARCHAR(200) NOT NULL,
+  `kode_pos` VARCHAR(200) NOT NULL,
+  `terima` VARCHAR(200) NOT NULL,
+  `tolak` VARCHAR(200) NOT NULL,
+  `cek` INT(11) NOT NULL
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `produksi`
@@ -168,10 +168,10 @@ INSERT INTO `produksi` (`id_order`, `invoice`, `kode_customer`, `kode_produk`, `
 --
 
 CREATE TABLE `teks_promo` (
-  `id` int(11) NOT NULL,
-  `nama` varchar(500) NOT NULL,
-  `deskripsi` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` INT(11) NOT NULL,
+  `nama` VARCHAR(500) NOT NULL,
+  `deskripsi` TEXT NOT NULL
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `teks_promo`
@@ -234,31 +234,31 @@ ALTER TABLE `teks_promo`
 -- AUTO_INCREMENT untuk tabel `about`
 --
 ALTER TABLE `about`
-  MODIFY `id_about` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_about` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id_keranjang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_keranjang` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT untuk tabel `produksi`
 --
 ALTER TABLE `produksi`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_order` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `teks_promo`
 --
 ALTER TABLE `teks_promo`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
