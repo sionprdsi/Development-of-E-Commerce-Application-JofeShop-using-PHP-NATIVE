@@ -79,7 +79,7 @@ $row = mysqli_fetch_assoc($result);
                             </div>
                             <div class="modal-body">
                                 <input class="form-control" type="number" min="1" name="jml" value="1"
-                                    style="width: 155px;" id="ubahJumlah">
+                                    style="width: 155px;" id="ubahJumlah" required>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">
@@ -90,17 +90,17 @@ $row = mysqli_fetch_assoc($result);
                                 <?php
                                 if (isset($_SESSION['user'])) {
                                     ?>
-                                    <button type="submit" class="btn btn-success" name="submit">
+                                    <button type="submit" class="btn btn-success" name="submit" required>
                                         <i class="fa fa-cart-plus"></i> Simpan dan Tambahkan ke Keranjang
                                     </button>
                                     <?php
                                 } else {
                                     ?>
-                                    <!-- <div class="col-md-6"> -->
-                                        <a href="keranjang.php" class="btn btn-success btn-block" role="button">
+                                    <div class="col-md-6">
+                                        <a href="keranjang.php" class="btn btn-success btn-block" role="button" required>
                                             <i class="fa fa-cart-plus"></i> Tambahkan ke Keranjang
                                         </a>
-                                    <!-- </div> -->
+                                    </div>
                                     <?php
                                 }
                                 ?>
@@ -111,15 +111,15 @@ $row = mysqli_fetch_assoc($result);
                 <?php
                 if (isset($_SESSION['user'])) {
                     ?>
-                    <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-shopping-cart"></i>
+                    <button type="submit" class="btn btn-success" required><i class="glyphicon glyphicon-shopping-cart"></i>
                         Tambahkan ke Keranjang</button>
                     <?php
                 } else {
                     ?>
-                    <!-- <div class="col-md-6"> -->
+                    <div class="col-md-4">
                         <a href="keranjang.php" class="btn btn-success btn-block" role="button"><i
                                 class="fa fa-cart-plus"></i> Tambahkan ke Keranjang</a>
-                    <!-- </div> -->
+                    </div>
                     <?php
                 }
                 ?>

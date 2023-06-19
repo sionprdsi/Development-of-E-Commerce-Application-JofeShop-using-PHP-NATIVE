@@ -6,16 +6,19 @@ if (!isset($_SESSION['admin'])) {
 }
 
 // pesanan baru 
-$result1 = mysqli_query($conn, "SELECT distinct invoice FROM produksi WHERE terima = 0 and tolak = 0");
-$jml1 = mysqli_num_rows($result1);
-
-// pesanan dibatalkan/ditolak
-$result2 = mysqli_query($conn, "SELECT distinct invoice FROM produksi WHERE  tolak = 1");
-$jml2 = mysqli_num_rows($result2);
+$result1 = mysqli_query($conn, "SELECT COUNT(*) as count FROM pemesanan WHERE status = 'Pesanan Baru'");
+$row1 = mysqli_fetch_assoc($result1);
+$jml1 = $row1['count'];
 
 // pesanan diterima
-$result3 = mysqli_query($conn, "SELECT distinct invoice FROM produksi WHERE  terima = 1");
-$jml3 = mysqli_num_rows($result3);
+$result2 = mysqli_query($conn, "SELECT COUNT(*) as count FROM pemesanan WHERE status = 'Pesanan Diterima'");
+$row2 = mysqli_fetch_assoc($result2);
+$jml2 = $row2['count'];
+
+// pesanan ditolak
+$result3 = mysqli_query($conn, "SELECT COUNT(*) as count FROM pemesanan WHERE status = 'Pesanan Ditolak'");
+$row3 = mysqli_fetch_assoc($result3);
+$jml3 = $row3['count'];
 
 ?>
 
@@ -171,23 +174,7 @@ $jml3 = mysqli_num_rows($result3);
                     </h1>
                   </div>
                   <div class="text-end">
-                    <a href="produksi.php" class="btn btn-outline-primary">Lihat Semua</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4 mb-4" style="text-align:center;">
-              <div class="card bg-light h-100 shadow-sm">
-                <div class="card-body d-flex flex-column justify-content-between">
-                  <div>
-                    <h4 class="card-title mb-3" style="color:red">PESANAN DIBATALKAN</h4>
-                    <h1 class="display-1 text-danger mb-0">
-                      <?= $jml2; ?>
-                    </h1>
-                  </div>
-                  <div class="text-end">
-                    <a href="produksi.php" class="btn btn-outline-danger">Lihat Semua</a>
+                    <!-- <a href="produksi.php" class="btn btn-outline-primary">Lihat Semua</a> -->
                   </div>
                 </div>
               </div>
@@ -199,11 +186,27 @@ $jml3 = mysqli_num_rows($result3);
                   <div>
                     <h4 class="card-title mb-3" style="color:green">PESANAN DITERIMA</h4>
                     <h1 class="display-1 text-success mb-0">
+                      <?= $jml2; ?>
+                    </h1>
+                  </div>
+                  <div class="text-end">
+                    <!-- <a href="produksi.php" class="btn btn-outline-success">Lihat Semua</a> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4 mb-4" style="text-align:center;">
+              <div class="card bg-light h-100 shadow-sm">
+                <div class="card-body d-flex flex-column justify-content-between">
+                  <div>
+                    <h4 class="card-title mb-3" style="color:red">PESANAN DITOLAK</h4>
+                    <h1 class="display-1 text-danger mb-0">
                       <?= $jml3; ?>
                     </h1>
                   </div>
                   <div class="text-end">
-                    <a href="produksi.php" class="btn btn-outline-success">Lihat Semua</a>
+                    <!-- <a href="produksi.php" class="btn btn-outline-danger">Lihat Semua</a> -->
                   </div>
                 </div>
               </div>
@@ -212,7 +215,6 @@ $jml3 = mysqli_num_rows($result3);
         </div>
       </div>
       <!-- END HALAMAN UTAMA ADMIN -->
-
     </div>
   </div>
 

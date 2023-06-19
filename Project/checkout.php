@@ -202,7 +202,7 @@ $rows = mysqli_fetch_assoc($cs);
 				</label>
 			</div>
 		</div>
-		<button type="submit" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
+		<button type="submit" class="btn btn-success" name="pesan"><i class="fas fa-shopping-cart"></i> Pesan Sekarang</button>
 		<a href="keranjang.php" class="btn btn-danger"><i class="fas fa-times"></i> Batal</a>
 	</form>
 

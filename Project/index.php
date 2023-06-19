@@ -18,8 +18,10 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
   echo "<style>
+  @import url('https://fonts.googleapis.com/css2?family=Dekko&display=swap');
+
     .text-center.heading {
-      font-size: 29px;
+      font-size: 32px;
       padding: 20px;
       color: white;
       border-radius: 10px;
@@ -29,7 +31,7 @@ if ($result->num_rows > 0) {
       background-image: linear-gradient(45deg, #5600c2 25%, #2A4FA6 50%, #5600c2 75%);
       background-size: 200% 200%;
       animation: wave 8s ease-in-out infinite;
-      font-family: 'Crimson Text', serif;
+      font-family: 'Dekko', cursive;
     }
 
     .text-center.heading .promo-badge {
@@ -66,8 +68,8 @@ if ($result->num_rows > 0) {
   }
 }
 ?>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
 <!-- END TEKS PROMO -->
+
 
 <!-- Carousel -->
 <div id="carousel-example" class="carousel slide" data-ride="carousel" style="margin-top: 19px">
@@ -184,7 +186,7 @@ if ($result->num_rows > 0) {
           <h3 style="font-size: 1.5rem; font-weight: bold;">
             <?= $row['nama']; ?>
           </h3>
-          <h4 style="font-size: 1.2rem; font-weight: bold; color: black;">
+          <h4 style="font-size: 1.2rem; font-weight: bold; color: black; ">
             <?= 'Rp. ' . number_format($row['harga']); ?>
           </h4>
           <div class="row">
@@ -248,8 +250,8 @@ if (mysqli_num_rows($result) > 0) {
       <div style="width: 100%; text-align: center;">
         <h2 style="font-size: 5.5rem; font-weight: bold; margin-bottom: 20px; font-family: 'Crimson Text', serif;">Sejarah
           Toko Jofe - Bakery</h2>
-        <p style="font-size: 1.9rem; color: #666; margin-bottom: 20px; margin-top: 6px;">
-          <?= substr($row['content'], 0, 1048) . '...'; ?>
+        <p style="font-size: 2.3rem; color: #666; margin-bottom: 20px; margin-top: 6px; font-family: 'Dekko', cursive; color:black">
+          <?= substr($row['content'], 0, 1000) . '...'; ?>
         </p>
         <center>
           <a href="about.php">

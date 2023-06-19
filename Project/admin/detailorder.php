@@ -8,7 +8,7 @@ if (!isset($_SESSION['admin'])) {
 
 <?php
 $invoices = $_GET['inv'];
-$d_order = mysqli_query($conn, "SELECT * FROM produksi WHERE invoice = '$invoices'");
+$d_order = mysqli_query($conn, "SELECT * FROM pemesanan WHERE invoice = '$invoices'");
 $t_order = mysqli_fetch_assoc($d_order);
 
 // $sortage = mysqli_query($conn, "SELECT * FROM produksi where cek = '1'");
@@ -196,24 +196,21 @@ $t_cs = mysqli_fetch_assoc($cs);
             <div class="col-md-12">
                 <table class="table table-striped">
                     <thead>
-                        <tr>
+                        <tr style="text-align:center;">
                             <th scope="col">No</th>
                             <th scope="col">Invoice</th>
                             <th scope="col">Kode Pembeli</th>
                             <th scope="col">Status</th>
                         </tr>
                     </thead>
-                    <tbody>
-                    <!-- , cek -->
+                    <tbody style="text-align:center;">
                         <?php
-                        $result = mysqli_query($conn, "SELECT DISTINCT invoice, kode_customer, status, kode_produk, qty,terima,tolak FROM produksi group by invoice");
-                        $no = 1;
-                        $array = 0;
+                        $result = mysqli_query($conn, "SELECT DISTINCT invoice, kode_customer, status FROM pemesanan GROUP BY invoice ORDER BY invoice DESC");
+                        $no = mysqli_num_rows($result);
                         while ($row = mysqli_fetch_assoc($result)) {
-                            $kodep = $row['kode_produk'];
-                            $inv = $row['invoice'];
+                            $invoice = $row['invoice'];
+                            $status = "";
                             ?>
-
                             <tr style="color: black">
                                 <td>
                                     <?= $no; ?>
@@ -224,41 +221,31 @@ $t_cs = mysqli_fetch_assoc($cs);
                                 <td>
                                     <?= $row['kode_customer']; ?>
                                 </td>
-                                <?php if ($row['terima'] == 1) { ?>
-                                    <td style="color: black">Pesanan Diterima
-                                        <?php
-                                } else if ($row['tolak'] == 1) {
-                                    ?>
-                                        <td>Pesanan Ditolak
-                                        <?php
-                                }
-                                if ($row['terima'] == 0 && $row['tolak'] == 0) {
-                                    ?>
-                                    <td>
+                                <?php if ($row['status'] == 'Pesanan Diterima') { ?>
+                                    <td style="color: green;">Pesanan Diterima</td>
+                                <?php } else if ($row['status'] == 'Pesanan Ditolak') { ?>
+                                        <td style="color: red;">Pesanan Ditolak</td>
+                                <?php } else { ?>
+                                        <td style="color:#4c84ff">
                                         <?= $row['status']; ?>
-                                        <?php
-                                }
-
-                                ?>
-                                </td>
+                                        </td>
+                                <?php } ?>
                                 <td>
-                                <!-- && $row['cek'] == 0 -->
-                                    <?php if ($row['terima'] == 0 ) { ?>
-
-                                        <a href="proses/terima.php?inv=<?= $row['invoice']; ?>&kdp=<?= $row['kode_produk']; ?>"
-                                            class="btn btn-success"><i class="glyphicon glyphicon-ok-sign"></i> Terima</a>
-                                        <a href="proses/tolak.php?inv=<?= $row['invoice']; ?>" class="btn btn-danger"
-                                            onclick="return confirm('Yakin Ingin Menolak ?')"><i
+                                    <?php if ($row['status'] != 'Pesanan Diterima' && $row['status'] != 'Pesanan Ditolak') { ?>
+                                        <a href="proses/terima.php?inv=<?= $row['invoice']; ?>&cs=<?= $row['kode_customer']; ?>"
+                                            class="btn btn-success"><i class="glyphicon glyphicon-ok-sign"></i>
+                                            Terima</a>
+                                        <a href="proses/tolak.php?inv=<?= $row['invoice']; ?>&cs=<?= $row['kode_customer']; ?>"
+                                            class="btn btn-danger" onclick="return confirm('Yakin Ingin Menolak?')"><i
                                                 class="glyphicon glyphicon-remove-sign"></i> Tolak</a>
                                     <?php } ?>
-
                                     <a href="detailorder.php?inv=<?= $row['invoice']; ?>&cs=<?= $row['kode_customer']; ?>"
                                         type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-eye-open"></i>
                                         Detail Pesanan</a>
                                 </td>
                             </tr>
                             <?php
-                            $no++;
+                            $no--;
                         }
                         ?>
 
@@ -272,6 +259,7 @@ $t_cs = mysqli_fetch_assoc($cs);
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
+                                <h4>List Pembelian</h4>
                                 <a href="m_produk.php" class="btn btn-default close"></a>
                                 <h4 class="modal-title" id="myModalLabel">#
                                     <?= $t_order['invoice']; ?>
@@ -300,7 +288,8 @@ $t_cs = mysqli_fetch_assoc($cs);
                                     <tr>
                                         <td>Alamat</td>
                                         <td>
-                                            <?php echo $t_order['alamat'] . "," . " " . $t_order['kota'] . " " . $t_order['provinsi'] . "," . " " . $t_order['kode_pos']; ?>
+                                            <?php echo isset($t_order['alamat']) ? $t_order['alamat'] : ''; ?>
+                                            <?php echo $t_order['alamat'] . ', ' . $t_order['kota'] . ' ' . $t_order['provinsi'] . ', ' . $t_order['kode_pos']; ?>
                                         </td>
                                     </tr>
                                     <tr>
@@ -312,7 +301,6 @@ $t_cs = mysqli_fetch_assoc($cs);
                                 </table>
 
                                 <hr>
-                                <h4>List Pembelian</h4>
                                 <table class="table table-striped">
                                     <tr>
                                         <th>No</th>
@@ -323,10 +311,13 @@ $t_cs = mysqli_fetch_assoc($cs);
                                         <th>Total</th>
                                     </tr>
                                     <?php
-                                    $order = mysqli_query($conn, "SELECT * FROM produksi WHERE invoice = '$invoices'");
+                                    $order = mysqli_query($conn, "SELECT * FROM detail_pesanan WHERE invoice = '$invoices'");
                                     $no = 1;
                                     $grand = 0;
                                     while ($list = mysqli_fetch_assoc($order)) {
+                                        $kode_produk = $list['kode_produk'];
+                                        $produk = mysqli_query($conn, "SELECT * FROM produk WHERE kode_produk = '$kode_produk'");
+                                        $produk_data = mysqli_fetch_assoc($produk);
                                         ?>
                                         <tr>
                                             <td>
@@ -336,20 +327,20 @@ $t_cs = mysqli_fetch_assoc($cs);
                                                 <?= $list['kode_produk']; ?>
                                             </td>
                                             <td>
-                                                <?= $list['nama_produk']; ?>
+                                                <?= isset($produk_data['nama']) ? $produk_data['nama'] : ''; ?>
                                             </td>
                                             <td>
-                                                <?= number_format($list['harga'], 0, ".", "."); ?>
+                                                <?= isset($produk_data['harga']) ? number_format($produk_data['harga'], 0, ".", ".") : ''; ?>
                                             </td>
                                             <td>
                                                 <?= $list['qty']; ?>
                                             </td>
                                             <td>
-                                                <?= number_format($list['harga'] * $list['qty'], 0, ".", "."); ?>
+                                                <?= isset($produk_data['harga']) && isset($list['qty']) ? number_format($produk_data['harga'] * $list['qty'], 0, ".", ".") : ''; ?>
                                             </td>
                                         </tr>
                                         <?php
-                                        $sub = $list['harga'] * $list['qty'];
+                                        $sub = isset($produk_data['harga']) && isset($list['qty']) ? $produk_data['harga'] * $list['qty'] : 0;
                                         $grand += $sub;
                                         $no++;
                                     }
@@ -360,6 +351,8 @@ $t_cs = mysqli_fetch_assoc($cs);
                                             </b></td>
                                     </tr>
                                 </table>
+
+
                             </div>
                             <div class="modal-footer">
                                 <a href="produksi.php" class="btn btn-default">Tutup</a>

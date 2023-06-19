@@ -144,8 +144,9 @@ if (!isset($_SESSION['admin'])) {
             <!-- page content -->
             <div class="right_col" role="main">
                 <div class="container py-4" style="background-color: #f8f9fa">
-                    <h2 class="text-center pb-4" style="font-size: 28px;">
-                        <b>Ubah Produk</b>
+                    <h2 class="text-center pb-4 pt-5 mb-0"
+                        style="padding: 10px; margin-bottom: 150px; font-family: 'Crimson Text', serif; font-size: 2.5rem; color: #333; text-shadow: 2px 2px #ccc; width: 100%;">
+                        <b>UBAH PRODUK</b>
                     </h2>
                     <hr>
                     <form action="proses/edit_produk.php" method="POST" enctype="multipart/form-data">
@@ -174,14 +175,17 @@ if (!isset($_SESSION['admin'])) {
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Nama Produk</label>
                                     <input type="text" class="form-control" id="exampleInputEmail1"
-                                        placeholder="Masukkan Nama Produk" name="nama" value="<?= $data['nama']; ?>">
+                                        placeholder="Masukkan Nama Produk" name="nama" value="<?= $data['nama']; ?>"
+                                        required>
+                                    <div class="invalid-feedback">Nama produk harus diisi.</div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Harga</label>
                                     <input type="number" class="form-control" id="exampleInputEmail1"
-                                        placeholder="masukkan Harga" name="harga" value="<?= $data['harga']; ?>">
+                                        placeholder="masukkan Harga" name="harga" value="<?= $data['harga']; ?>" min="1"
+                                        max="">
                                     <p class="help-block mt-2">Isi Harga tanpa menggunakan Titik(.) atau Koma (,)</p>
                                 </div>
                             </div>
@@ -205,11 +209,7 @@ if (!isset($_SESSION['admin'])) {
                 </div>
             </div>
         </div>
-        <!-- /page content -->
 
-        <!-- footer content -->
-
-        <!-- /footer content -->
     </div>
     </div>
 

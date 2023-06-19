@@ -122,7 +122,7 @@ if (isset($_GET['del'])) {
                                                         <div class="form-group">
                                                             <label for="qty">Jumlah:</label>
                                                             <input type="number" class="form-control" id="qty" name="qty"
-                                                                value="<?= $row['jml']; ?>" min="1">
+                                                                value="<?= $row['jml']; ?>" min="1" required>
                                                         </div>
                                                         <button type="submit" name="submit1" class="btn btn-primary">
                                                             <i class="fa fa-save"></i> Simpan Perubahan

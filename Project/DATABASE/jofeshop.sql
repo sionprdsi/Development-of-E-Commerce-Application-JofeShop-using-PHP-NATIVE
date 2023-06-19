@@ -6,11 +6,13 @@
 -- Waktu pembuatan: 06 Jun 2023 pada 19.49
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.6
+DROP DATABASE jofeshop
+CREATE DATABASE jofeshop
+USE jofeshop
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -28,9 +30,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `about` (
-  `id_about` INT(11) NOT NULL,
+  `id_about` INT(11) NOT NULL AUTO_INCREMENT,
   `image` VARCHAR(255) DEFAULT NULL,
-  `content` TEXT DEFAULT NULL
+  `content` TEXT DEFAULT NULL,
+  PRIMARY KEY (`id_about`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -42,29 +45,6 @@ INSERT INTO `about` (`id_about`, `image`, `content`) VALUES
 
 -- --------------------------------------------------------
 
---
--- Struktur dari tabel `admin`
---
-
-CREATE TABLE `admin` (
-  `id` INT(11) NOT NULL,
-  `username` VARCHAR(200) NOT NULL,
-  `password` TEXT NOT NULL
-) ENGINE=INNODB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `admin`
---
-
-INSERT INTO `admin` (`id`, `username`, `password`) VALUES
-(1, 'admin', '$2y$10$AIy0X1Ep6alaHDTofiChGeqq7k/d1Kc8vKQf1JZo0mKrzkkj6M626');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `customer`
---
-
 CREATE TABLE `customer` (
   `kode_customer` VARCHAR(100) NOT NULL,
   `nama` VARCHAR(100) NOT NULL,
@@ -72,7 +52,8 @@ CREATE TABLE `customer` (
   `username` VARCHAR(100) NOT NULL,
   `password` VARCHAR(100) NOT NULL,
   `telp` VARCHAR(200) NOT NULL,
-  `status` INT(4) DEFAULT 1
+  `status` INT(4) DEFAULT 1,
+  PRIMARY KEY (`kode_customer`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -86,17 +67,41 @@ INSERT INTO `customer` (`kode_customer`, `nama`, `email`, `username`, `password`
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(200) NOT NULL,
+  `password` TEXT NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`) VALUES
+(1, 'admin', '$2y$10$AIy0X1Ep6alaHDTofiChGeqq7k/d1Kc8vKQf1JZo0mKrzkkj6M626');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `keranjang`
 --
 
 CREATE TABLE `keranjang` (
-  `id_keranjang` INT(11) NOT NULL,
+  `id_keranjang` INT(11) AUTO_INCREMENT,
   `kode_customer` VARCHAR(100) NOT NULL,
   `kode_produk` VARCHAR(100) NOT NULL,
   `nama_produk` VARCHAR(100) NOT NULL,
   `qty` INT(11) NOT NULL,
-  `harga` INT(11) NOT NULL
+  `harga` INT(11) NOT NULL,
+  PRIMARY KEY (`id_keranjang`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `keranjang` (`id_keranjang`, `kode_customer`, `kode_produk`, `nama_produk`, `qty`, `harga`) VALUES
+(1, 'C0002', 'P0001', 'Kue Nastar', 2, 140000);
 
 -- --------------------------------------------------------
 
@@ -109,57 +114,69 @@ CREATE TABLE `produk` (
   `nama` VARCHAR(100) UNIQUE NOT NULL,
   `image` TEXT UNIQUE NOT NULL,
   `deskripsi` TEXT NOT NULL,
-  `harga` INT(11) NOT NULL
+  `harga` INT(11) NOT NULL,
+  `id` INT(11),
+  `id_keranjang` INT(11),
+  PRIMARY KEY (`kode_produk`),
+  FOREIGN KEY (`id`) REFERENCES `admin`(`id`),
+  FOREIGN KEY (`id_keranjang`) REFERENCES `keranjang`(`id_keranjang`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `produk`
 --
 
-INSERT INTO `produk` (`kode_produk`, `nama`, `image`, `deskripsi`, `harga`) VALUES
-('P0001', 'Kue Nastar', 'Kue Nastar.jpg', 'Kue nastar adalah kue kering tradisional Indonesia yang terkenal dan banyak disukai. Kue ini biasanya berbentuk bulat kecil dengan isian selai nanas di tengahnya dan bagian luar yang renyah dan kering. Kue ini terbuat dari campuran tepung terigu, mentega, telur, gula, dan selai nanas. Setelah adonan dipanggang dalam oven, kue ini dihiasi dengan taburan gula halus di atasnya. Kue nastar biasanya disajikan sebagai camilan atau hidangan penutup dan sangat populer di acara-acara seperti Lebaran atau Natal. Dengan rasa manis dan gurih yang khas, kue nastar adalah pilihan yang sempurna untuk memanjakan lidah Anda.', 140000),
-('P0002', 'Kue Salju', 'Kue Salju.jpg', 'Selamat datang di dunia yang menakjubkan di mana kelezatan bertemu dengan keanggunan, dan di tengahnya ada kue Salju yang memukau. Kue Salju kami adalah simbol keindahan dan kelembutan, menawarkan pengalaman yang menakjubkan bagi para pecinta kue.\r\n\r\nDengan lapisan gula halus yang menyerupai salju yang baru turun dari langit, kue ini memberikan kepuasan visual sebelum Anda merasakan kelezatan di mulut Anda. Ketika Anda memasukkan kue Salju yang rapuh ke dalam mulut Anda, ia meleleh dengan lembut seperti salju yang mencair di lidah Anda, menghadirkan sensasi yang luar biasa.\r\n\r\nRahasia utama dari kue Salju kami adalah teksturnya yang lembut dan rapuh sekaligus. Dalam setiap gigitan, Anda akan merasakan kelembutan yang lezat dan kemudian merasakan kegembiraan saat kue tersebut hancur dan meleleh di mulut Anda. Ia memberikan sensasi yang menyenangkan saat menggigitnya, dengan rasa yang begitu memikat.', 100000),
-('P0003', 'Kue tart coklat', 'Kue Coklat.jpg', 'Selamat datang dalam petualangan rasa yang memikat, di mana kelembutan bertemu dengan kenikmatan dalam kue tart coklat kami. Kue tart coklat ini adalah jawaban bagi pecinta coklat yang mencari pengalaman tak terlupakan di setiap gigitannya.\r\n\r\nKue tart coklat kami menggoda selera dengan kulit tart yang renyah dan menggigit, memberikan fondasi yang sempurna untuk lapisan-lapisan coklat yang memukau. Dari permukaan yang mengkilap hingga ke dalam setiap lapisannya, aroma coklat yang kaya dan menggugah selera mengisi ruangan begitu kue ini dipotong.\r\n\r\nLembutnya tekstur kue tart coklat ini seimbang dengan kekuatan rasa coklat yang intens. Setiap gigitan adalah perpaduan sempurna antara kenikmatan lezat dan kekayaan coklat yang memanjakan lidah Anda. Sensasi melumerkan kue tart ini di mulut akan menghadirkan ledakan rasa yang memikat, memenuhi setiap indera dengan kepuasan yang tak tertandingi.', 100000),
-('P0004', 'Kue Kacang', '647f70e64dbad.jpg', 'Selamat datang di dunia kelezatan yang kaya dan menggugah selera dengan kue kacang kami yang istimewa. Kue kacang kami adalah perpaduan sempurna antara rasa gurih kacang dan kelembutan tekstur yang menghadirkan kenikmatan tiada tara di setiap gigitan.\r\n\r\nKue kacang kami memiliki sentuhan yang khas, dengan adonan yang dibuat dengan hati-hati dan diisi dengan kacang yang dipanggang dengan sempurna. Ketika Anda menggigit kue ini, kelezatan kacang yang renyah dan gurih segera memenuhi lidah Anda, memberikan sensasi yang memikat.\r\n\r\nRahasia sejati dari kue kacang kami adalah keseimbangan yang sempurna antara manis dan gurih. Gula halus yang menempel di permukaan kue memberikan sentuhan manis yang menggoda, sementara rasa kacang yang kaya dan gurih memberikan dimensi yang lebih dalam pada rasa.', 110000),
-('P0005', 'Kue Semprit Strawbarry', '647f6a3f9013c.jpg', 'Kue Semprit Strawberry kami memukau indera dengan tampilannya yang menarik dan menggoda selera. Dengan bentuk yang khas dari kue semprit, setiap gigitan menghadirkan kepuasan visual dan rasa yang menggugah selera. Permukaan kue yang halus dengan warna merah muda yang menggoda akan membuat Anda tergoda untuk mencicipinya.\r\n\r\nRahasia kelezatan kue Semprit Strawberry kami terletak pada penggunaan buah strawberry segar dan berkualitas tinggi. Kami menggunakan potongan-potongan strawberry yang dipadatkan di dalam adonan kue, memberikan aroma dan rasa yang menyegarkan. Setiap gigitan akan memanjakan lidah Anda dengan kombinasi manis dan asam yang sempurna.\r\n\r\nTekstur kue Semprit Strawberry ini sangat lembut dan rapuh, hampir mencair di mulut. Ketika Anda menggigitnya, kue tersebut berpadu dengan potongan-potongan strawberry yang lezat, memberikan sensasi yang memuaskan di setiap gigitan. Kelembutan kue semprit ini melengkapi kelezatan buah strawberry yang segar, menciptakan harmoni rasa yang tak terlupakan.', 120000),
-('P0006', 'Kue Sagon Bakar', '647f6b1aab251.jpg', 'Kue Sagon Bakar kami memukau indera dengan tampilannya yang menarik dan menggoda selera. Dengan lapisan luar yang renyah dan berwarna kecokelatan yang terbentuk saat dipanggang, kue ini menjanjikan kenikmatan di setiap gigitannya. Tampilan yang menggugah selera ini memberikan petunjuk tentang kelezatan yang ada di dalamnya.\r\n\r\nRahasia sejati dari kue Sagon Bakar kami terletak pada tekstur yang unik dan rasa yang lezat. Ketika Anda menggigit kue ini, permukaan renyahnya memberikan kontras menarik dengan lapisan dalam yang lembut dan padat. Rasa manis gula kelapa yang karamel dan aroma kelapa yang khas memenuhi mulut Anda, memberikan pengalaman rasa yang menggugah selera.\r\n\r\n', 100000),
-('P0007', 'Kue Semprit choffee', '647f6bcd03277.jpg', 'Selamat datang di dunia kelezatan yang memukau dan perpaduan yang menggoda dengan kue Semprit Choffee kami yang istimewa. Kue Semprit Choffee merupakan gabungan sempurna antara cita rasa lezat kue semprit tradisional dengan sentuhan eksotis dan aroma yang memikat dari kopi.\r\n\r\nKue Semprit Choffee kami menghadirkan sensasi yang tak terlupakan di setiap gigitannya. Permukaan luar kue yang renyah dan rapuh memberikan kepuasan pada lidah, sementara di dalamnya tersimpan rahasia kelezatan yang mengejutkan. Kombinasi manis dan gurih dari kue semprit yang lembut dan rasa kopi yang kaya dan aromatik menciptakan pengalaman rasa yang luar biasa.', 100000);
+INSERT INTO `produk` (`kode_produk`, `nama`, `image`, `deskripsi`, `harga`, `id`, `id_keranjang`) VALUES
+('P0001', 'Kue Salju', 'Kue Salju.jpg', 'Selamat datang di dunia yang menakjubkan di mana kelezatan bertemu dengan keanggunan, dan di tengahnya ada kue Salju yang memukau. Kue Salju kami adalah simbol keindahan dan kelembutan, menawarkan pengalaman yang menakjubkan bagi para pecinta kue.\r\n\r\nDengan lapisan gula halus yang menyerupai salju yang baru turun dari langit, kue ini memberikan kepuasan visual sebelum Anda merasakan kelezatan di mulut Anda. Ketika Anda memasukkan kue Salju yang rapuh ke dalam mulut Anda, ia meleleh dengan lembut seperti salju yang mencair di lidah Anda, menghadirkan sensasi yang luar biasa.\r\n\r\nRahasia utama dari kue Salju kami adalah teksturnya yang lembut dan rapuh sekaligus. Dalam setiap gigitan, Anda akan merasakan kelembutan yang lezat dan kemudian merasakan kegembiraan saat kue tersebut hancur dan meleleh di mulut Anda. Ia memberikan sensasi yang menyenangkan saat menggigitnya, dengan rasa yang begitu memikat.', 140000, 1, 1),
+('P0002', 'Kue tart coklat', 'Kue Coklat.jpg', 'Selamat datang dalam petualangan rasa yang memikat, di mana kelembutan bertemu dengan kenikmatan dalam kue tart coklat kami. Kue tart coklat ini adalah jawaban bagi pecinta coklat yang mencari pengalaman tak terlupakan di setiap gigitannya.\r\n\r\nKue tart coklat kami menggoda selera dengan kulit tart yang renyah dan menggigit, memberikan fondasi yang sempurna untuk lapisan-lapisan coklat yang memukau. Dari permukaan yang mengkilap hingga ke dalam setiap lapisannya, aroma coklat yang kaya dan menggugah selera mengisi ruangan begitu kue ini dipotong.\r\n\r\nLembutnya tekstur kue tart coklat ini seimbang dengan kekuatan rasa coklat yang intens. Setiap gigitan adalah perpaduan sempurna antara kenikmatan lezat dan kekayaan coklat yang memanjakan lidah Anda. Sensasi melumerkan kue tart ini di mulut akan menghadirkan ledakan rasa yang memikat, memenuhi setiap indera dengan kepuasan yang tak tertandingi.', 140000, 1, 1),
+('P0003', 'Kue Kacang', '647f70e64dbad.jpg', 'Selamat datang di dunia kelezatan yang kaya dan menggugah selera dengan kue kacang kami yang istimewa. Kue kacang kami adalah perpaduan sempurna antara rasa gurih kacang dan kelembutan tekstur yang menghadirkan kenikmatan tiada tara di setiap gigitan.\r\n\r\nKue kacang kami memiliki sentuhan yang khas, dengan adonan yang dibuat dengan hati-hati dan diisi dengan kacang yang dipanggang dengan sempurna. Ketika Anda menggigit kue ini, kelezatan kacang yang renyah dan gurih segera memenuhi lidah Anda, memberikan sensasi yang memikat.\r\n\r\nRahasia sejati dari kue kacang kami adalah keseimbangan yang sempurna antara manis dan gurih. Gula halus yang menempel di permukaan kue memberikan sentuhan manis yang menggoda, sementara rasa kacang yang kaya dan gurih memberikan dimensi yang lebih dalam pada rasa.', 140000, 1, 1),
+('P0004', 'Kue Semprit Strawbarry', '647f6a3f9013c.jpg', 'Kue Semprit Strawberry kami memukau indera dengan tampilannya yang menarik dan menggoda selera. Dengan bentuk yang khas dari kue semprit, setiap gigitan menghadirkan kepuasan visual dan rasa yang menggugah selera. Permukaan kue yang halus dengan warna merah muda yang menggoda akan membuat Anda tergoda untuk mencicipinya.\r\n\r\nRahasia kelezatan kue Semprit Strawberry kami terletak pada penggunaan buah strawberry segar dan berkualitas tinggi. Kami menggunakan potongan-potongan strawberry yang dipadatkan di dalam adonan kue, memberikan aroma dan rasa yang menyegarkan. Setiap gigitan akan memanjakan lidah Anda dengan kombinasi manis dan asam yang sempurna.\r\n\r\nTekstur kue Semprit Strawberry ini sangat lembut dan rapuh, hampir mencair di mulut. Ketika Anda menggigitnya, kue tersebut berpadu dengan potongan-potongan strawberry yang lezat, memberikan sensasi yang memuaskan di setiap gigitan. Kelembutan kue semprit ini melengkapi kelezatan buah strawberry yang segar, menciptakan harmoni rasa yang tak terlupakan.', 140000, 1, 1),
+('P0005', 'Kue Sagon Bakar', '647f6b1aab251.jpg', 'Kue Sagon Bakar kami memukau indera dengan tampilannya yang menarik dan menggoda selera. Dengan lapisan luar yang renyah dan berwarna kecokelatan yang terbentuk saat dipanggang, kue ini menjanjikan kenikmatan di setiap gigitannya. Tampilan yang menggugah selera ini memberikan petunjuk tentang kelezatan yang ada di dalamnya.\r\n\r\nRahasia sejati dari kue Sagon Bakar kami terletak pada tekstur yang unik dan rasa yang lezat. Ketika Anda menggigit kue ini, permukaan renyahnya memberikan kontras menarik dengan lapisan dalam yang lembut dan padat. Rasa manis gula kelapa yang karamel dan aroma kelapa yang khas memenuhi mulut Anda, memberikan pengalaman rasa yang menggugah selera.\r\n\r\n', 140000, 1, 1),
+('P0006', 'Kue Semprit choffee', '647f6bcd03277.jpg', 'Selamat datang di dunia kelezatan yang memukau dan perpaduan yang menggoda dengan kue Semprit Choffee kami yang istimewa. Kue Semprit Choffee merupakan gabungan sempurna antara cita rasa lezat kue semprit tradisional dengan sentuhan eksotis dan aroma yang memikat dari kopi.\r\n\r\nKue Semprit Choffee kami menghadirkan sensasi yang tak terlupakan di setiap gigitannya. Permukaan luar kue yang renyah dan rapuh memberikan kepuasan pada lidah, sementara di dalamnya tersimpan rahasia kelezatan yang mengejutkan. Kombinasi manis dan gurih dari kue semprit yang lembut dan rasa kopi yang kaya dan aromatik menciptakan pengalaman rasa yang luar biasa.', 140000, 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `produksi`
+-- Struktur dari tabel `pemesanan`
 --
 
-CREATE TABLE `produksi` (
-  `id_order` INT(11) NOT NULL,
-  `invoice` VARCHAR(200) NOT NULL,
-  `kode_customer` VARCHAR(200) NOT NULL,
-  `kode_produk` VARCHAR(200) NOT NULL,
-  `nama_produk` VARCHAR(200) NOT NULL,
-  `qty` INT(11) NOT NULL,
-  `harga` INT(11) NOT NULL,
-  `STATUS` VARCHAR(200) NOT NULL,
-  `tanggal` DATE NOT NULL,
-  `provinsi` VARCHAR(200) NOT NULL,
-  `kota` VARCHAR(200) NOT NULL,
+CREATE TABLE `pemesanan` (
+  `invoice` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `tanggal` DATE,
   `alamat` VARCHAR(200) NOT NULL,
-  `kode_pos` VARCHAR(200) NOT NULL,
-  `terima` VARCHAR(200) NOT NULL,
-  `tolak` VARCHAR(200) NOT NULL,
-  `cek` INT(11) NOT NULL
+  `kota` VARCHAR(255),
+  `kode_pos` INT,
+  `status` ENUM('Pesanan Baru', 'Pesanan Diterima', 'Pesanan Ditolak'),
+  `provinsi` VARCHAR(255),
+  `harga_total_pesanan` FLOAT,
+  `id` INT(11),
+  `kode_customer` VARCHAR(100),
+  FOREIGN KEY (`id`) REFERENCES `admin`(`id`),
+  FOREIGN KEY (`kode_customer`) REFERENCES `customer`(`kode_customer`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `produksi`
 --
 
-INSERT INTO `produksi` (`id_order`, `invoice`, `kode_customer`, `kode_produk`, `nama_produk`, `qty`, `harga`, `STATUS`, `tanggal`, `provinsi`, `kota`, `alamat`, `kode_pos`, `terima`, `tolak`, `cek`) VALUES
-(8, 'INV0001', 'C0002', 'P0003', 'Kue tart coklat', 1, 100000, 'Pesanan Baru', '2023-03-21', 'Sumatra Utara', 'Nias', 'Jl.Telaumbanua', '60129', '1', '0', 0),
-(14, 'INV0002', 'C0003', 'P0002', 'Kue Salju', 1, 100000, '0', '2023-06-06', 'Sumatra Utara', 'Balige', 'balige', '22312', '1', '0', 0),
-(15, 'INV0003', 'C0003', 'P0003', 'Kue tart coklat', 1, 80000, 'PESANAN BARU', '2023-06-06', 'Sumatra Utara', 'Balige', 'balige', '22312', '2', '1', 0),
-(16, 'INV0004', 'C0003', 'P0002', 'Kue Salju', 1, 100000, 'PESANAN BARU', '2023-06-06', 'Sumatra Utara', 'Balige', 'ASA', '22312', '2', '1', 0),
-(17, 'INV0004', 'C0003', 'P0001', 'Kue Nastar', 1, 100000, 'PESANAN BARU', '2023-06-06', 'Sumatra Utara', 'Balige', 'ASA', '22312', '2', '1', 0);
+INSERT INTO `pemesanan` (`invoice`, `tanggal`, `alamat`,`kota`, `kode_pos`, `status`, `provinsi`, `harga_total_pesanan`, `id`, kode_customer) VALUES
+(NULL, '2023-03-21', 'Jl.Telaumbanua', 'Nias', 60129, 'Pesanan Baru', 'Sumatra Utara', 100000, 1, 'C0002');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `detail_pesanan`
+--
+
+CREATE TABLE `detail_pesanan` (	
+  `invoice` INT(11),
+  `kode_produk` VARCHAR(100),
+  `harga_detail_pesanan` FLOAT,
+  `qty` INT,
+  PRIMARY KEY (`invoice`, `kode_produk`),
+  FOREIGN KEY (`invoice`) REFERENCES `pemesanan`(`invoice`),
+  FOREIGN KEY (`kode_produk`) REFERENCES `produk`(`kode_produk`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -168,7 +185,7 @@ INSERT INTO `produksi` (`id_order`, `invoice`, `kode_customer`, `kode_produk`, `
 --
 
 CREATE TABLE `teks_promo` (
-  `id` INT(11) NOT NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `nama` VARCHAR(500) NOT NULL,
   `deskripsi` TEXT NOT NULL
 ) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
@@ -180,9 +197,9 @@ CREATE TABLE `teks_promo` (
 INSERT INTO `teks_promo` (`id`, `nama`, `deskripsi`) VALUES
 (1, 'Teks promo', 'Selamat Datang di JoFe Bakery - Rasakan Sensasi Istimewa!\r\n<br><br> Kami menghadirkan sensasi manis yang luar biasa dengan kue-kue unik dan lezat yang dibuat dengan menggunakan bahan premium. Kunjungi toko kami dan nikmati pengalaman tak terlupakan dalam kelezatan kue-kue dari JoFe Bakery. Tersedia juga layanan pemesanan online untuk memudahkan Anda dalam memesan kue-kue istimewa kami. Mari buat momen spesialmu semakin istimewa dengan kelezatan dari JoFe Bakery!');
 
---
--- Indexes for dumped tables
---
+-- --------------------------------------------------------
+-- --------------------------------------------------------
+-- --------------------------------------------------------
 
 --
 -- Indeks untuk tabel `about`
@@ -215,20 +232,16 @@ ALTER TABLE `produk`
   ADD PRIMARY KEY (`kode_produk`);
 
 --
--- Indeks untuk tabel `produksi`
+-- Indeks untuk tabel `pemesanan`
 --
-ALTER TABLE `produksi`
-  ADD PRIMARY KEY (`id_order`);
+ALTER TABLE `pemesanan`
+  ADD PRIMARY KEY (`invoice`);
 
 --
 -- Indeks untuk tabel `teks_promo`
 --
 ALTER TABLE `teks_promo`
   ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT untuk tabel yang dibuang
---
 
 --
 -- AUTO_INCREMENT untuk tabel `about`
@@ -252,7 +265,7 @@ ALTER TABLE `keranjang`
 -- AUTO_INCREMENT untuk tabel `produksi`
 --
 ALTER TABLE `produksi`
-  MODIFY `id_order` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `invoice` INT(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `teks_promo`

@@ -30,7 +30,7 @@ if (mysqli_num_rows($result) > 0) {
 
 
       <div class="col-md-6" style="margin-top: 10px;">
-        <p style="font-size: 18px;">
+        <p style="font-size: 18px; font-family: 'Dekko', cursive;">
           <?= $row['content']; ?>
         </p>
         <div class="d-flex justify-content-between align-items-center mt-5">

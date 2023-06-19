@@ -139,7 +139,7 @@ $nama_material = array();
             </div>
             <!-- /top navigation -->
 
-            <!-- page content -->
+            <!-- PEMESANAN -->
             <div class="right_col" role="main">
                 <div class="container">
                     <div class="row">
@@ -184,17 +184,13 @@ $nama_material = array();
                                     </tr>
                                 </thead>
                                 <tbody style="text-align:center;">
-<!-- cek -->
-                                    <?php 
-                                    $result = mysqli_query($conn, "SELECT DISTINCT invoice, kode_customer, status, kode_produk, qty,terima,tolak FROM produksi group by invoice");
-                                    $no = 1;
-                                    $array = 0;
+                                    <?php
+                                    $result = mysqli_query($conn, "SELECT DISTINCT invoice, kode_customer, status FROM pemesanan GROUP BY invoice ORDER BY invoice DESC");
+                                    $no = mysqli_num_rows($result);
                                     while ($row = mysqli_fetch_assoc($result)) {
-                                        $kodep = $row['kode_produk'];
-                                        $inv = $row['invoice'];
+                                        $invoice = $row['invoice'];
                                         $status = "";
                                         ?>
-
                                         <tr style="color: black">
                                             <td>
                                                 <?= $no; ?>
@@ -205,51 +201,43 @@ $nama_material = array();
                                             <td>
                                                 <?= $row['kode_customer']; ?>
                                             </td>
-                                            <?php if ($row['terima'] == 1) { ?>
-                                                <td style="color: green;">Pesanan Diterima
-                                                    <?php
-                                            } else if ($row['tolak'] == 1) {
-                                                ?>
-                                                    <td style="color: red;">Pesanan Ditolak
-                                                    <?php
-                                            }
-                                            if ($row['terima'] == 0 && $row['tolak'] == 0) {
-                                                ?>
-                                                <td style="color:#4c84ff">
+                                            <?php if ($row['status'] == 'Pesanan Diterima') { ?>
+                                                <td style="color: green;">Pesanan Diterima</td>
+                                            <?php } else if ($row['status'] == 'Pesanan Ditolak') { ?>
+                                                    <td style="color: red;">Pesanan Ditolak</td>
+                                            <?php } else { ?>
+                                                    <td style="color:#4c84ff">
                                                     <?= $row['status']; ?>
-                                                    <?php
-                                            }
-                                            ?>
-                                            </td>
-                                            <td><!--&& $row['cek'] == 0 -->
-                                                <?php if ($row['terima'] == 0 ) { ?>
-
-                                                    <a href="proses/terima.php?inv=<?= $row['invoice']; ?>&kdp=<?= $row['kode_produk']; ?>"
+                                                    </td>
+                                            <?php } ?>
+                                            <td>
+                                                <?php if ($row['status'] != 'Pesanan Diterima' && $row['status'] != 'Pesanan Ditolak') { ?>
+                                                    <a href="proses/terima.php?inv=<?= $row['invoice']; ?>&cs=<?= $row['kode_customer']; ?>"
                                                         class="btn btn-success"><i class="glyphicon glyphicon-ok-sign"></i>
                                                         Terima</a>
-                                                    <a href="proses/tolak.php?inv=<?= $row['invoice']; ?>"
+                                                    <a href="proses/tolak.php?inv=<?= $row['invoice']; ?>&cs=<?= $row['kode_customer']; ?>"
                                                         class="btn btn-danger"
-                                                        onclick="return confirm('Yakin Ingin Menolak ?')"><i
+                                                        onclick="return confirm('Yakin Ingin Menolak?')"><i
                                                             class="glyphicon glyphicon-remove-sign"></i> Tolak</a>
-
                                                 <?php } ?>
-
                                                 <a href="detailorder.php?inv=<?= $row['invoice']; ?>&cs=<?= $row['kode_customer']; ?>"
                                                     type="submit" class="btn btn-primary"><i
-                                                        class="glyphicon glyphicon-eye-open"></i>
-                                                    Detail Pesanan</a>
+                                                        class="glyphicon glyphicon-eye-open"></i> Detail Pesanan</a>
                                             </td>
                                         </tr>
                                         <?php
-                                        $no++;
+                                        $no--;
                                     }
                                     ?>
+
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- PEMESANAN -->
+
         </div>
     </div>
 

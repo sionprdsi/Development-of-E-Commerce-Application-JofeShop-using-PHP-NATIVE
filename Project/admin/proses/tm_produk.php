@@ -47,7 +47,7 @@ if (mysqli_num_rows($checkResult) > 0) {
 }
 
 if (move_uploaded_file($tmp_file, "../../image/produk/" . $namaGambarBaru)) {
-    $result = mysqli_query($conn, "INSERT INTO produk VALUES('$kode','$nm_produk','$namaGambarBaru','$desk','$harga')");
+    $result = mysqli_query($conn, "INSERT INTO produk (kode_produk, nama, image, deskripsi, harga, id, id_keranjang) VALUES ('$kode','$nm_produk','$namaGambarBaru','$desk','$harga',1,1)");
 }
 
 if ($result) {

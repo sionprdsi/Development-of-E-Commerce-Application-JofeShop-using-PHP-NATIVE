@@ -132,12 +132,13 @@ if (isset($_SESSION['kd_cs'])) { // Ini adalah awal dari struktur kondisional if
 		style="background: linear-gradient(to bottom right, #5600c2, #2A4FA6); display: flex;	padding: 40px; 	text-align: center;  justify-content: space-between;">
 		<div class="logo">
 			<img src="image/logo/JOfe BAkery-modified.png" alt="JoFe - Shop">
-			<span>JoFe Bakery</span>
+			<span style="font-family: 'Pacifico', cursive; font-size: 27px;">JoFe Bakery</span>
 		</div>
 		<div class="content">
-			<h2>Kenikmatan Kuliner di JoFe Bakery</h2>
-			<p>Sambutlah kenikmatan kuliner yang tiada duanya di JoFe Bakery! Kami menghadirkan berbagai hidangan lezat
-				yang menggoda selera Anda. Mulai dari kue-kue istimewa hingga Kue kering yang memanjakan lidah, Setiap hidangan kami adalah
+			<h2 style="font-family: 'Pacifico', cursive;">Kenikmatan Kuliner di JoFe Bakery</h2>
+			<p style="font-family: 'Dekko', cursive; font-size: 20px;">Sambutlah kenikmatan kuliner yang tiada duanya di JoFe Bakery! Kami menghadirkan berbagai hidangan lezat
+				yang menggoda selera Anda. Mulai dari kue-kue istimewa hingga Kue kering yang memanjakan lidah, Setiap
+				hidangan kami adalah
 				perpaduan sempurna antara rasa yang lezat, tekstur yang menggoda, dan presentasi yang memukau. Dari
 				klasik hingga kreasi baru yang mengguncang lidah, setiap kunjungan ke JoFe Bakery adalah petualangan
 				kuliner yang menggetarkan selera Anda. Mari bergabung dalam perjalanan kuliner kami dan nikmati
