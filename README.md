@@ -21,6 +21,6 @@ Terima kasih telah menggunakan Aplikasi E-Commerce JofeShop. Jika Anda memiliki 
 ### Kontribusi dan Kontak
 
 Kami sangat terbuka untuk kontribusi dan masukan dari komunitas. Untuk informasi lebih lanjut atau pertanyaan, silakan hubungi kami melalui [spardosi12@gmail.com](mailto:spardosi12@gmail.com).
-*hub : 082278900178 - sion 
+*hub : - sion 
 
 Selamat berkoding!
