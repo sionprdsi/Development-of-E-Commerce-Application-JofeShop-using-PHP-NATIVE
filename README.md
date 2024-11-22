@@ -1,5 +1,13 @@
 ### Aplikasi E-Commerce JofeShop menggunakan PHP NATIVE
 
+### <summary><strong>Tools:</strong></summary>
+<p>
+    <img src="https://img.shields.io/badge/Code-PHP-blue?&logo=php" />
+    <img src="https://img.shields.io/badge/Database-MySQL-orange?&logo=mysql" />
+    <img src="https://img.shields.io/badge/Editor-VSCode-brightgreen?&logo=visualstudiocode" />
+    <img src="https://img.shields.io/badge/Server-XAMPP-yellow?&logo=apache" />
+</p>
+
 Proyek Pengembangan Aplikasi E-Commerce JofeShop bertujuan untuk membantu JoFe Bakery dalam memasarkan dan mempromosikan produknya kepada khalayak yang lebih luas, sambil memberikan pengalaman menjelajah dan berbelanja yang mulus bagi pelanggan. Sistem ini memfasilitasi eksplorasi produk, pemesanan, dan komunikasi melalui WhatsApp untuk transaksi. Aplikasi ini mengakomodasi tiga jenis pengguna: admin, pengunjung, dan pembeli, masing-masing dengan fungsionalitas khusus sesuai dengan kebutuhan mereka.
 
 #### Fitur Utama:
