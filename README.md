@@ -61,10 +61,11 @@ We are very open to contributions and feedback from the community. For more info
 ## Installation and Setup:
 
 1. Clone this repository to your local development environment.
+
    ```bash
    git clone (https://github.com/sionpardosi/Development-of-E-Commerce-Application-JofeShop-using-PHP-NATIVE.git)
 
-2. Make sure you have **PHP** and **MySQL** set up correctly on your machine.
+3. Make sure you have **PHP** and **MySQL** set up correctly on your machine.
 
 You can check your **PHP** version with the following command:
 ```bash
