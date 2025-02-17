@@ -1,4 +1,4 @@
-# JofeShop E-Commerce Application using PHP NATIVE
+# JofeShop E-Commerce Application using PHP NATIVE.
 
 ### <summary><strong>Tools:</strong></summary>
 <p>
